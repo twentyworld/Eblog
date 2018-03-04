@@ -1,6 +1,8 @@
 package com.eblog.blog; 
 
-import org.junit.Test; 
+import com.eblog.util.BlogCreator;
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -15,9 +17,11 @@ public class BlogCreatorTest {
 
     BlogCreator blogCreator;
 
+    Catalog catalog;
     @Before
     public void before() throws Exception {
         blogCreator = new BlogCreator();
+        catalog = blogCreator.getCatalog();
     }
 
     @After
@@ -32,7 +36,7 @@ public class BlogCreatorTest {
     @Test
     public void testGetCatalog() throws Exception {
 
-        System.out.println(blogCreator.getCatalog().toString());
+        Assert.assertTrue(catalog.getAllBlogs().size()==10);
     }
 
 } 

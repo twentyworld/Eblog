@@ -2,35 +2,67 @@ package com.eblog.util;
 
 import com.eblog.blog.Catalog;
 import com.eblog.entity.Blog;
+import org.apache.log4j.Logger;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 /**
- * Created by teemper on 2018/3/4, 20:55.
+ * Created by teemper on 2018/3/4, 20:31.
  *
  * @author Zed.
  * copy as you like, but with these words.
  * from win.
  */
-public class FileToCatelogConversion {
+@Component
+public class BlogCreator {
 
-    public static Catalog convert(File root) {
+    Logger logger = Logger.getLogger(BlogCreator.class);
+    private String blogLocation = "/blog";
 
+    public BlogCreator() {
+
+    }
+
+    public BlogCreator(String blogLocation) {
+        this.blogLocation = blogLocation;
+    }
+
+
+    public Catalog getCatalog() {
+        logger.info("getCatalog invoking.");
+        try {
+            File file = new ClassPathResource(blogLocation).getFile();
+            return getCatalogUnderFile(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new Catalog();
+    }
+
+    public Catalog getCatalogUnderFile(File file) {
+        return convert(file);
+    }
+
+
+    private Catalog convert(File root) {
         Catalog catalog = new Catalog();
 
         File[] files = root.listFiles();
         if (files == null || files.length == 0) return new Catalog();
 
         for (File file : files) {
-            if (file.isDirectory())
-                 catalog.addCatalog(convert(file));
+            if (file.isDirectory()) catalog.addCatalog(convert(file));
             else if (file.isFile()) {
                 Blog blog = fileToBlog(file);
                 catalog.addBlog(blog);
-            }
-            else
-                return new Catalog();
+            } else return new Catalog();
         }
 
         return catalog;
@@ -38,21 +70,19 @@ public class FileToCatelogConversion {
     }
 
     private static Blog fileToBlog(File file) {
-        if (file == null) return null;
+        if (file == null) return new Blog();
+
         String title = file.getName();
         Date date = new Date(System.currentTimeMillis());
         String author = "teemper";
         String context = readFile(file);
 
-        Blog blog = new Blog(title, date, author, context, false);
-
-
-        return blog;
-
+        return  new Blog(title, date, author, context, false);
 
     }
 
     private static String readFile(File file) {
+
 //        StringBuilder stringBuilder = new StringBuilder();
 //        if (file.isFile() && file.exists()) {
 //            try {
@@ -87,4 +117,5 @@ public class FileToCatelogConversion {
             return null;
         }
     }
+
 }

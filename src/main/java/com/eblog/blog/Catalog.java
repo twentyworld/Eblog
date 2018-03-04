@@ -16,7 +16,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class Catalog {
     private String name;
-    private List<User> users;
     private List<Blog> blogs;
     private List<Catalog> catalogs;
 
@@ -52,6 +51,10 @@ public class Catalog {
         this.catalogs = catalogs;
     }
 
+
+
+
+
     /**
      * add a blog element to the list
      * @param blog:
@@ -63,7 +66,6 @@ public class Catalog {
         else
             blogs = getBlogs();
         return blogs.add(blog);
-
     }
     /**
      * remove a blog element to the list
@@ -102,6 +104,19 @@ public class Catalog {
         }
         return false;
     }
+
+    public List<Blog> getAllBlogs() {
+
+        List<Blog> allBlogs = new CopyOnWriteArrayList<>();
+        allBlogs.addAll(blogs);
+
+        for (Catalog catalog:catalogs) {
+            allBlogs.addAll(catalog.getAllBlogs());
+        }
+
+        return allBlogs;
+    }
+
 
     @Override
     public String toString() {
