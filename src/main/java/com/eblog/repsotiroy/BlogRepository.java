@@ -1,16 +1,15 @@
 package com.eblog.repsotiroy;
 
-import com.eblog.entity.Blog;
-import org.springframework.data.repository.Repository;
-
 /**
- * Created by teemper on 2018/3/4, 20:13.
+ * Created by teemper on 2018/3/4, 22:54.
  *
  * @author Zed.
+ * <p>
  * copy as you like, but with these words.
+ * please kindly write to teempe@163.com if anthing.
  * from win.
  */
 
-public interface BlogRepository extends Repository<Blog, String>{
+public class BlogRepository {
 
 }
