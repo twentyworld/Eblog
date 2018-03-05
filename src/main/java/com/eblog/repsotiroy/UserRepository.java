@@ -12,9 +12,11 @@ import java.util.List;
  * copy as you like, but with these words.
  * from win.
  */
+
 public interface UserRepository extends Repository<User, Long> {
+
     User findUserById(long id);
-    List<User> findAllUser();
+    List<User> findAll();
     User save(User user);
     long count();
 

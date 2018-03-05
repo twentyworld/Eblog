@@ -1,6 +1,9 @@
 package com.eblog.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by teemper on 2018/3/4, 20:01.
@@ -11,8 +14,9 @@ import javax.persistence.Entity;
  */
 
 
-@Entity
+@Entity(name = "BLOG_USER")
 public class User {
+    @Id
     private long id;
     private String name;
     private String password;
@@ -80,5 +84,11 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", name='" + name + '\'' + ", password='" + password + '\'' + ", phone='" + phone + '\'' + ", male=" + male + ", email='" + email + '\'' + '}';
     }
 }

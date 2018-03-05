@@ -1,13 +1,10 @@
 package com.eblog.repsotiroy;
 
 import com.eblog.entity.Catalog;
-import com.eblog.util.BlogCreator;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by teemper on 2018/3/4, 22:54.
+ * Created by teemper on 2018/3/5, 22:34.
  *
  * @author Zed.
  * <p>
@@ -15,7 +12,10 @@ import org.springframework.stereotype.Component;
  * please kindly write to teempe@163.com if anthing.
  * from win.
  */
-public class BlogRepository  {
+@Component
+public interface CatalogRepository {
 
+    public Catalog getCatalog();
+    public Catalog getCatalogUnderFile(String path);
 
 }

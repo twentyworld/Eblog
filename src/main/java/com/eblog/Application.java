@@ -1,5 +1,8 @@
 package com.eblog;
 
+import com.eblog.entity.User;
+import com.eblog.repsotiroy.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +21,9 @@ public class Application implements CommandLineRunner {
         SpringApplication.run(Application.class,args);
     }
 
+
+    @Autowired
+    UserRepository repository;
     /**
      * Callback used to run the bean.
      *
@@ -27,5 +33,8 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        User blogUser = new User(3,"teemper","teemper","17621762488",true,"teemper@163.com");
+        repository.save(blogUser);
+        System.out.println(repository.findAll());
     }
 }

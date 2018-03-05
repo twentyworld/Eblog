@@ -1,6 +1,8 @@
-package com.eblog.blog; 
+package com.eblog.blog;
 
+import com.eblog.entity.Catalog;
 import com.eblog.util.BlogCreator;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
@@ -15,13 +17,13 @@ import org.junit.After;
 */ 
 public class BlogCreatorTest { 
 
-    BlogCreator blogCreator;
+    Logger logger = Logger.getLogger(BlogCreatorTest.class);
+    private Catalog catalog;
 
-    Catalog catalog;
     @Before
     public void before() throws Exception {
-        blogCreator = new BlogCreator();
-        catalog = blogCreator.getCatalog();
+
+        catalog = new BlogCreator().getCatalog();
     }
 
     @After
@@ -35,8 +37,9 @@ public class BlogCreatorTest {
     */
     @Test
     public void testGetCatalog() throws Exception {
-
         Assert.assertTrue(catalog.getAllBlogs().size()==10);
+//        System.out.println(catalog.getAllBlogs().get(5).getContext());
+        logger.info(catalog.getAllBlogs().get(5).getContext());
     }
 
 } 

@@ -1,1 +1,2 @@
-insert into user(id, name) values (1,"")
+insert into BLOG_USER(id, name, password, phone, male, email) values(1,'teemper','teemper','17621762488',true,'teemper@163.com');
+insert into BLOG_USER(id, name, password, phone, male, email) values(2,'twentyworld','twentyworld','17621762488',1,'teemper@163.com');

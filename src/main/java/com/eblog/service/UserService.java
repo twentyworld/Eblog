@@ -1,7 +1,6 @@
 package com.eblog.service;
 
 import com.eblog.entity.User;
-import com.eblog.repsotiroy.BlogRepository;
 import com.eblog.repsotiroy.UserRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class UserService implements InitializingBean {
     }
 
     public List<User> getAllUser() {
-        return repository.findAllUser();
+        return repository.findAll();
     }
 
 

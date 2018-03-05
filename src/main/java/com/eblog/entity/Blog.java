@@ -1,6 +1,7 @@
 package com.eblog.entity;
 
-import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 /**
@@ -11,22 +12,24 @@ import java.util.Date;
  * from win.
  */
 
-@Entity
 public class Blog {
 
     private String title;
     private Date initDate;
-    private String author;
+    private User author;
+    @JsonIgnore
     private String context;
     private boolean update;
+    private String description;
 
 
-    public Blog(String title, Date initDate, String author, String context, boolean update) {
+    public Blog(String title, Date initDate, User author, String context, boolean update,String description) {
         this.title = title;
         this.initDate = initDate;
         this.author = author;
         this.context = context;
         this.update = update;
+        this.description = description;
     }
 
     public Blog() {
@@ -48,11 +51,11 @@ public class Blog {
         this.initDate = initDate;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
@@ -70,6 +73,14 @@ public class Blog {
 
     public void setUpdate(boolean update) {
         this.update = update;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
