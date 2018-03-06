@@ -91,14 +91,14 @@ public class CatalogRepositoryImpl implements CatalogRepository {
         Date date = new Date(file.lastModified());
         User author = userRepository.findUserById(1);
         String context = readFile(file);
-        String description  = getBbogDescription(context);
+        String description  = getBlogDescription(context);
 
 
         return  new Blog(title, date, author, context, false,description);
 
     }
 
-    private  String getBbogDescription(String context) {
+    private  String getBlogDescription(String context) {
         if (context.contains("---"))
             return firstParagraph(context.split("---")[1].split("\n"));
         else if (context.contains("----"))
@@ -117,7 +117,7 @@ public class CatalogRepositoryImpl implements CatalogRepository {
         return null;
     }
 
-    private static String readFile(File file) {
+    public static String readFile(File file) {
 
 //        StringBuilder stringBuilder = new StringBuilder();
 //        if (file.isFile() && file.exists()) {

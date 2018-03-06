@@ -1,7 +1,6 @@
 package com.eblog.blog;
 
 import com.eblog.entity.Catalog;
-import com.eblog.util.BlogCreator;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,7 +22,7 @@ public class BlogCreatorTest {
     @Before
     public void before() throws Exception {
 
-        catalog = new BlogCreator().getCatalog();
+//        catalog = new BlogCreator().getCatalog();
     }
 
     @After

@@ -23,6 +23,7 @@ public class Blog {
     private String description;
 
 
+
     public Blog(String title, Date initDate, User author, String context, boolean update,String description) {
         this.title = title;
         this.initDate = initDate;
