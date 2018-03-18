@@ -1,8 +1,10 @@
 package com.eblog.repsotiroy;
 
 import com.eblog.entity.User;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -21,7 +23,7 @@ public interface UserRepository extends Repository<User, Long> {
     long count();
 
     boolean existsById(String id);
-    User delete(User user);
+    void delete(User user);
     User deleteById(String id);
     User deleteByName(String name);
     User deleteByEmail(String email);

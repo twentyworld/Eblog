@@ -1,5 +1,6 @@
 package com.eblog.service;
 
+import com.eblog.entity.Blog;
 import com.eblog.repsotiroy.BlogRepository;
 
 import org.springframework.stereotype.Service;
@@ -15,8 +16,7 @@ import java.util.List;
  */
 
 @Service
-public class BlogService {
+public interface BlogService {
 
-    private BlogRepository blogRepository;
-
+    public Blog getBlogByTitle(String title);
 }

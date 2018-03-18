@@ -1,5 +1,6 @@
 package com.eblog.entity;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Catalog {
     private String name;
     private User owner;
-    private List<Blog> blogs;
+    private List<File> blogs;
     private List<Catalog> catalogs;
 
 //    public Catalog(List<Blog> blogs, List<Catalog> catalogs) {
@@ -31,11 +32,11 @@ public class Catalog {
      * get the list blog under this catalog.
      * @return list blog
      */
-    public List<Blog> getBlogs() {
+    public List<File> getBlogs() {
         return blogs;
     }
 
-    public void setBlogs(List<Blog> blogs) {
+    public void setBlogs(List<File> blogs) {
         this.blogs = blogs;
     }
     /**
@@ -72,12 +73,7 @@ public class Catalog {
      * @param blog:
      * @return boolean
      */
-    public boolean addBlog(Blog blog) {
-//        if (blogs == null)
-//            blogs = new CopyOnWriteArrayList<>();
-//        else
-//            blogs = getBlogs();
-//        return blogs.add(blog);
+    public boolean addBlog(File blog) {
         return blogs.add(blog);
     }
 
@@ -86,12 +82,7 @@ public class Catalog {
      * @param blog:
      * @return boolean
      */
-    public boolean removeBlog(Blog blog) {
-//        if (blogs!=null){
-//            blogs = getBlogs();
-//           return  blogs.remove(blog);
-//        }
-//        return false;
+    public boolean removeBlog(File blog) {
         return  blogs.remove(blog);
     }
 
@@ -101,10 +92,6 @@ public class Catalog {
      * @return boolean
      */
     public boolean addCatalog(Catalog catalog) {
-//        if (catalogs == null)
-//            catalogs = new CopyOnWriteArrayList<>();
-//        else catalogs = getCatalogs();
-//        return catalogs.add(catalog);
         return catalogs.add(catalog);
     }
 
@@ -114,25 +101,21 @@ public class Catalog {
      * @return boolean
      */
     public boolean removeCatalog(Catalog catalog) {
-//        if (catalogs != null) {
-//            catalogs = getCatalogs();
-//            return catalogs.remove(catalog);
-//        }
-//        return false;
         return catalogs.remove(catalog);
     }
 
-    public List<Blog> getAllBlogs() {
 
-        List<Blog> allBlogs = new CopyOnWriteArrayList<>();
-        allBlogs.addAll(blogs);
+    public List<File> getAllBlogs() {
+
+        List<File> allBlogDescription = new CopyOnWriteArrayList<>();
+        allBlogDescription.addAll(blogs);
 
         for (Catalog catalog:catalogs) {
-            allBlogs.addAll(catalog.getAllBlogs());
+            allBlogDescription.addAll(catalog.getAllBlogs());
         }
-
-        return allBlogs;
+        return allBlogDescription;
     }
+
 
 
 

@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by teemper on 2018/3/5, 23:13.
  *
@@ -48,7 +50,15 @@ public class CatalogServiceImpl implements CatalogService{
 
     }
 
+    @Override
+    public List<Catalog> getSecondaryCatalog() {
+        return catalogRepository.getCatalog().getCatalogs();
+    }
 
+    @Override
+    public Catalog getAdminCatalog() {
+        return catalogRepository.getCatalog();
+    }
 
 
 }

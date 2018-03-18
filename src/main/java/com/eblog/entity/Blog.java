@@ -15,25 +15,27 @@ import java.util.Date;
 public class Blog {
 
     private String title;
+    private String synopsis;
     private Date initDate;
     private User author;
-    @JsonIgnore
-    private String context;
+    private String content;
     private boolean update;
-    private String description;
+    private boolean shared = true;
 
 
-
-    public Blog(String title, Date initDate, User author, String context, boolean update,String description) {
-        this.title = title;
-        this.initDate = initDate;
-        this.author = author;
-        this.context = context;
-        this.update = update;
-        this.description = description;
-    }
 
     public Blog() {
+    }
+
+
+    public Blog(String title, String synopsis, Date initDate, User author, String content, boolean update, boolean shared) {
+        this.title = title;
+        this.synopsis = synopsis;
+        this.initDate = initDate;
+        this.author = author;
+        this.content = content;
+        this.update = update;
+        this.shared = shared;
     }
 
     public String getTitle() {
@@ -60,12 +62,12 @@ public class Blog {
         this.author = author;
     }
 
-    public String getContext() {
-        return context;
+    public String getContent() {
+        return content;
     }
 
-    public void setContext(String context) {
-        this.context = context;
+    public void setContent(String context) {
+        this.content = context;
     }
 
     public boolean isUpdate() {
@@ -76,16 +78,25 @@ public class Blog {
         this.update = update;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSynopsis() {
+        return synopsis;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+    public boolean isShared() {
+        return shared;
+    }
+
+    public void setShared(boolean shared) {
+        this.shared = shared;
     }
 
     @Override
     public String toString() {
-        return "Blog{" + "title='" + title + '\'' + ", initDate=" + initDate + ", author='" + author + '\'' +  ", update=" + update + '}';
+        return "Blog{" + "title='" + title + '\'' + ", synopsis='" + synopsis + '\'' + ", initDate=" + initDate + ", author=" + author + ", content='" + content + '\'' + ", update=" + update + '}';
     }
+
 }

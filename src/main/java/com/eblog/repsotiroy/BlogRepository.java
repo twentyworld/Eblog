@@ -1,6 +1,9 @@
 package com.eblog.repsotiroy;
 
 
+import com.eblog.entity.Blog;
+import org.springframework.stereotype.Component;
+
 /**
  * Created by teemper on 2018/3/4, 22:54.
  *
@@ -10,7 +13,8 @@ package com.eblog.repsotiroy;
  * please kindly write to teempe@163.com if anthing.
  * from win.
  */
-public class BlogRepository  {
 
-
+@Component
+public interface BlogRepository  {
+    public Blog getBlogByTitle(String title);
 }

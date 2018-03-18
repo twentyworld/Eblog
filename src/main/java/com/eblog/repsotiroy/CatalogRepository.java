@@ -18,4 +18,5 @@ public interface CatalogRepository {
     public Catalog getCatalog();
     public Catalog getCatalogUnderFile(String path);
 
+
 }
